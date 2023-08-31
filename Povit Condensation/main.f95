@@ -3,7 +3,10 @@ program main
     implicit none
 
     real , dimension(:,:) , allocatable :: matrix 
-    integer :: order,i,j
+    real :: temp_row , determinent
+    integer :: order,i,j,row1,row2,k,sign
+
+    sign = 1
 
     print *, "Enter the number of the rows in the matrix :: "
     read *, order
@@ -15,6 +18,15 @@ program main
 
     allocate(matrix(order, order))
 
+    subroutine flip(order,matrix(order,order),row1,row2)
+        allocate(temp_row)
+        do i = 1,order
+            temp_row = matrix(row1,i)
+            matrix(row1,i) = matrix(row2,i)
+            matrix(row2,i) = temp_row
+        enddo 
+        end subroutine
+
 
     print *, "Enter the matrix :: "
     do i = 1,order
@@ -24,7 +36,24 @@ program main
         enddo
     enddo
 
+
     do i = 1,order
-1        if (matrix(i,1) == 0) then
+1       if (matrix(i,i) == 0) then
+            do k = i+1,order 
+                if (matrix(k,i) .ne. 0) then
+                    call flip(order,matrix,k,i)
+                    sign = sign*(-1)
+                    goto 1
+                endif
+            enddo
+        do j = i+1,order
+            do k = i,order
+                matrix(j,k) = matrix(j,k) - (matrix(j,k)/matrix(i,k))*matrix(i,k)
+            enddo
+        enddo
+    enddo
+
+    
+
             
 
