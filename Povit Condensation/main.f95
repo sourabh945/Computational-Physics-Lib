@@ -53,7 +53,19 @@ program main
         enddo
     enddo
 
-    
+    determinent = 1
 
-            
+    do i = 1,order
+        if (matrix(i,i) == 0) then 
+            print *, "Determinent of the matrix is zero"
+            stop
+        else
+            determinent = determinent*matrix(i,i)
+        endif
+    enddo
 
+    print *, "Determinent of the matrix is ", determinent
+
+    stop
+
+    end program
