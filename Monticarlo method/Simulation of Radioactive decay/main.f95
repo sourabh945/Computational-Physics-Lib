@@ -1,16 +1,30 @@
-program simulation
+program simulation 
 
-    integer steps , num_atoms , count
-    real halflife , totaltime , intervals , decay_prob , atom_prob 
-    logical f1
+    ! Refrence for the documantions :: https://www.ijeast.com/papers/86-90,Tesma505,IJEAST.pdf
+    
+    implicit none
 
+    ! Decleartion of the variables
 
-    print *, "Enter the value of the half life time period of the material"
-    read(*,*)halflife
-    print *, "Enter the number of the atoms initially"
-    read(*,*)num_atoms
-    print *, "Enter the steps for calculation"
-    read(*,*)steps
+    real :: decay_prob , atoms_prob , halflife
+    integer :: num_atoms , count , interval , i
+    logical :: f1
+    
+    ! Getting the user input for half life time period and intial atoms
+
+    print *, "Enter the half life time period :: "
+    read *, halflife
+    print *, "Enter the number atoms at start :: "
+    read *, num_atoms
+
+    !validing the parameters
+
+    if (halflife <= 0 .or. num_atoms <=0) then
+        print *, "input parameters are not correct please enter valid parameters"
+        stop "Invalid Parameter"
+    endif
+
+    ! Checking and opening the file with status new or replace
 
     inquire(file="decay.dat",exist=f1) ! for checking the existance of the file
     if (f1) then
@@ -19,36 +33,36 @@ program simulation
         open(1,file="decay.dat",status="new",action="write")
     endif
 
+    ! Calculating the probability those atoms doesn't decay in this interval but decay in future
 
-    totaltime = 10*halflife
-    intervals = totaltime/(real(steps))
+    decay_prob = 1 - exp(-(0.693)/halflife)
 
-    write(1,*) intervals*0 , num_atoms
+    ! taking time to zero and write the initial points to the file
 
-    do i = 1,steps
+    interval = 0
+
+    write(1,*)interval,num_atoms
+
+    ! generating the random-number as atoms_prob and checking for those whoes are less than decay_prob
+    ! and count the decay element and write number of left atoms into the file until the zero atoms are left
+
+    do while(num_atoms .ne. 0)
         count = 0
-        decay_prob = (log(2.0)/halflife)*(intervals*i)
-        print *, decay_prob
-        do j = 1, num_atoms
-            call random_number(atom_prob)
-            if (atom_prob <= decay_prob) then
+        do i = 1,num_atoms
+            call random_number(atoms_prob)      
+            if (atoms_prob <= decay_prob) then
                 count = count + 1
             endif
         enddo
+        interval = interval + 1
         num_atoms = num_atoms - count
-        write(1,*) intervals*i , num_atoms
-    enddo
+        write(1,*)interval,num_atoms
+    enddo 
 
-    close (1)
+    ! closing the file
 
-    call execute_command_line("gnuplot -presist -e 'plot "decay.dat"  using 1:2' ")
-
-    print *, "simulation is end"
-
+    close(1)
+    
     stop
-    end program
 
-
-
-
-
+end program
