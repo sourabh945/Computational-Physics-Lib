@@ -62,6 +62,8 @@ program simulation
     ! closing the file
 
     close(1)
+
+    print *, "simulation is complete "
     
     stop
 
