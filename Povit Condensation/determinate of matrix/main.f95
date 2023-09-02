@@ -64,6 +64,10 @@ program main
         determinent = determinent*matrix(i,i)
     enddo
 
+    ! here we deallocate the matrix from the heap memory 
+
+    deallocate(matrix)
+
     ! Here we multiply the determinent with its sign getting from the row exchanges 
 
     determinent = determinent*sign

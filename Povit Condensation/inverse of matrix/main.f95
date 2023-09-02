@@ -69,7 +69,7 @@ program inverse
         determinent = determinent*matrix(i,i)
     enddo
 
-    determinant = determinant*sign
+    determinent = determinent*sign
 
     print *, "Determinent of the matrix is ", determinent
 
@@ -102,6 +102,11 @@ program inverse
         enddo
         print *, ""
     enddo
+
+    ! here we deallocate the matrix from the heap memory 
+
+    deallocate(matrix)
+
 
     stop
 
