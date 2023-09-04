@@ -117,7 +117,7 @@ program inverse
             integer ,intent(in)::row1,row2 
             real :: temp_row
             integer :: i
-            do i = 1,order
+            do i = 1,order*2
                 temp_row = matrix(row1,i)
                 matrix(row1,i) = matrix(row2,i)
                 matrix(row2,i) = temp_row
