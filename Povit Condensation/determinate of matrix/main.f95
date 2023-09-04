@@ -22,7 +22,7 @@ program main
         stop "Indexing Error"
     endif
 
-    ! Here we allocate the matrix array in the memory with variable lenght
+    ! Here we allocate the matrix array in the memory with variable length
 
     allocate(matrix(order, order))
 
