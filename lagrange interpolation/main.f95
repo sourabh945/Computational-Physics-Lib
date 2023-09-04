@@ -2,11 +2,13 @@ program main
 
     implicit none
 
-    ! 
+    ! declearing the variables 
 
     real , dimension(:) , allocatable :: x ,y
     integer :: n,i
     real :: v,result,larg
+
+    ! getting the number of the set of points given and validate the number of points
 
     print *, "Enter the number of the entry :: "
     read *, n
@@ -15,7 +17,11 @@ program main
         stop "Invalid number of the entry"
     endif
 
+    ! allocate the x and y array for storing the points
+
     allocate(x(n),y(n))
+
+
 
     print *, "Enter the entry :: "
     print *, "x     y"
@@ -30,6 +36,8 @@ program main
         call lagrange(i,v)
         result = result + y(i)*larg
     enddo
+
+    deallocate(x,y)
 
     print *, "The result is ",result
 
