@@ -79,16 +79,16 @@ program main
     ! Here we make subroutine for flip the row for avoid the povit zero condition.
 
     contains 
-            subroutine flip(row1,row2)
-                integer ,intent(in)::row1,row2 
-                real :: temp_row
-                integer :: i
-                do i = 1,order
-                    temp_row = matrix(row1,i)
-                    matrix(row1,i) = matrix(row2,i)
-                    matrix(row2,i) = temp_row
-                enddo
-                return  
-                end subroutine
+        subroutine flip(row1,row2)
+            integer ,intent(in)::row1,row2 
+            real :: temp_row
+            integer :: i
+            do i = 1,order
+                temp_row = matrix(row1,i)
+                matrix(row1,i) = matrix(row2,i)
+                matrix(row2,i) = temp_row
+            enddo
+            return  
+            end subroutine
 
     end program
