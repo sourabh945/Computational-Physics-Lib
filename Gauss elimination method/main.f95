@@ -139,7 +139,7 @@ program guass_elmination
             enddo
 
             return  
-            end subroutine flip
+        end subroutine flip
 
         subroutine flip_col(col1,col2) ! this subroutine use to flip the column   
             
@@ -157,7 +157,7 @@ program guass_elmination
             variable(col2) = temp_element
 
             return 
-            end subroutine flip_col
+        end subroutine flip_col
 
         subroutine povit(row) ! this subroutine is use for to do poviting in the matrix per user define paviting status ( pavit_status)
             
@@ -196,6 +196,6 @@ program guass_elmination
             endif
 
             return
-            end subroutine povit
+        end subroutine povit
                 
 end program
