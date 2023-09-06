@@ -6,7 +6,7 @@ program equations
     real , dimension(:,:),allocatable :: matrix
     real , dimension(:) , allocatable ::  solution , variable
     integer :: order , i , j , k , povit_status
-    real :: determinent , sol
+    real :: determinent , sol , mul
 
 
     print *, "Enter the number of the variable :: "
@@ -28,18 +28,19 @@ program equations
     do i = 1, order
         do j = 1,order+1
             if (j > order) then 
-                print *, "Enter the constant term in "i"th equation :: "
+                print *, "Enter the constant term in ",i,"th equation :: "
                 read *, matrix(i,order+1)
+            else
+                print *, "Enter ",i,j,"th element :: "
+                read *, matrix(i,j)
             endif
-            print *, "Enter ",i,j,"th element :: "
-            read *, matrix(i,j)
         enddo
     enddo
 
     print *, "Enter the status of the povit /n for no povit chosse 0,for half choose 1, for full choose 2"
     read *, povit_status
 
-    if(povit < 0 .or. povit > 2) then 
+    if(povit_status < 0 .or. povit_status > 2) then 
         stop "Invalid Povit option "
     endif
 
@@ -62,13 +63,13 @@ program equations
         enddo
     enddo
 
-    determinant = 1
+    determinent = 1
 
     do i = 1,order
-        determinant = determinant*matrix(i,i)
+        determinent = determinent*matrix(i,i)
     enddo
 
-    if (determinant == 0) then
+    if (determinent == 0) then
         stop "No Solution is exist for these equation "
     endif
 
@@ -132,15 +133,16 @@ program equations
             if (povit_status == 0) then 
                 return 
             else if (povit_status == 1) then
-                povit_value = matrix(row)
+                povit_value = matrix(row,row)
                 do i = row,order
                     if (matrix(i,row) > povit_value) then
                         row_max_povit = i
-                        povit_value = matrix(row)
+                        povit_value = matrix(i,row)
                     endif
+                enddo
                 call flip(row,row_max_povit)
                 return 
-            else
+            else if (povit_status == 2) then
                 povit_value = matrix(row,row)
                 do i = row,order
                     do j = row,order
