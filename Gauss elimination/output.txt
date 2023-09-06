@@ -53,4 +53,7 @@
  Value of            4 th element is :: 
    1.08108115    
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c86bdbb8f859fa2327cbd3a59dce3b23486346f8
