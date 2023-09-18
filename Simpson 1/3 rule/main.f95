@@ -20,6 +20,10 @@ program simpson_rule
         call Exit(1)
     endif
 
+    if(mod(d,2) .ne. 0)then
+        d = d+1
+    endif
+
 ! defining the interval
 
     h = (upper - lower)/(real(d))
@@ -27,12 +31,8 @@ program simpson_rule
     sum = func(upper) + func(lower)
 
 ! loop calcuation the area of the all rectangle inside the limits
-    do i = 1,d
-        if (mod(i,2)==0) then
-            sum = sum + 4*func(lower + i*h)
-        else
-            sum = sum + 2*func(lower + i*h)
-        endif 
+    do i = 1,d/2
+        sum = sum + 4*func(lower + real(2*i-1)*h) + 2*func(lower + real(2*i)*h)
     enddo 
 
     sum = sum*(h/3)
