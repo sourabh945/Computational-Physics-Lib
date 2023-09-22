@@ -4,4 +4,4 @@
 0
  Enter the number of iteration :: 
 1000
- Value of the integration is    1127.25024    
+ Value of the integration is    1125.00024

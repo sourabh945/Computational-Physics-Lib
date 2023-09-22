@@ -28,7 +28,7 @@ program simpson_rule
 
     h = (upper - lower)/(real(d))
 
-    sum = func(upper) + func(lower)
+    sum =  func(lower) - func(upper) 
 
 ! loop calcuation the area of the all rectangle inside the limits
     do i = 1,d/2

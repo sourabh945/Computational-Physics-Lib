@@ -3,22 +3,22 @@ program main
     implicit none
 
     real :: upper,lower , integration = 0
-    real , dimension(:,:), allocatable , parameter :: optimiser
+    real , dimension(:,:), allocatable  :: optimiser
     integer :: i , degree 
 
-    print *, "Enter the order of the polynomial :: "
+    print *, "Enter the order of the polynomial  (Hint : 3 or 5):: "
     read *, degree
-    print *, "Enter the lower limit :: "
-    read *, lower
     print *, "Enter the uppper limit :: "
     read *, upper
+    print *, "Enter the lower limit :: "
+    read *, lower
 
     if (degree == 3) then
         allocate(optimiser(2,2))
         optimiser(1,1) = 1
-        optimiser(1,2) = sqrt(real(1/3))
+        optimiser(1,2) = -sqrt(1.0/3.0)
         optimiser(2,1) = 1
-        optimiser(2,2) = -sqrt(real(1/3))
+        optimiser(2,2) = sqrt(1.0/3.0)
 
     else if (degree == 5) then
         allocate(optimiser(3,2))
@@ -36,16 +36,29 @@ program main
     degree = (degree + 1)/2
 
 
-    do i = 1,degree:
-        integration = integration + optimiser(i,1)*func(optimiser(i,2))
+    do i = 1,degree
+        integration = integration + optimiser(i,1)*(func(optimiser(i,2)))
     enddo
+
+    deallocate(optimiser)
+
+    integration = (integration*(upper  - lower))/2.0
 
     print *, "The integration is :: ",integration
 
     stop 
 
     contains
-        subroutine 
+        real function func(t)
+        real , intent(in) :: t
+        real :: output , x
+        x = ((upper - lower)*t + upper + lower)/2.0
+        output = x**3
+        func = output
+        return 
+        end function func
+
+end program
 
 
 

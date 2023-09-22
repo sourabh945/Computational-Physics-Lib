@@ -1,0 +1,7 @@
+ Enter the order of the polynomial  (Hint : 3 or 5):: 
+3
+ Enter the uppper limit :: 
+16
+ Enter the lower limit :: 
+5
+ The integration is ::    16227.7500    
