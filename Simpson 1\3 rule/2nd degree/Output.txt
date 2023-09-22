@@ -1,0 +1,13 @@
+ Enter the upper limit of x axis of the integration :: 
+15
+ Enter the lower limit of x axis of the integeration :: 
+10
+ Enter the upper limit of y axis of the integration :: 
+12
+ Enter the lower limit of y axis of the integration :: 
+3
+ Enter the number of iteration of x axis :: 
+1000
+ Enter the number of iteration of y axis :: 
+1000
+ Value of the integration is    9959.99902    
