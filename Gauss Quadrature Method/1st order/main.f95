@@ -39,7 +39,7 @@ program main
     do i = 1,degree
         integration = integration + optimiser(i,1)*(func(optimiser(i,2)))
     enddo
-
+  
     deallocate(optimiser)
 
     integration = (integration*(upper  - lower))/2.0
