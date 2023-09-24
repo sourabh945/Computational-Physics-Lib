@@ -1,7 +1,7 @@
- Enter the order of the polynomial  (Hint : 3 or 5):: 
-3
- Enter the uppper limit :: 
-16
- Enter the lower limit :: 
+ Enter the order of the polynomial  (Hint : 2 to 5):: 
 5
- The integration is ::    16227.7500    
+ Enter the uppper limit :: 
+15
+ Enter the lower limit :: 
+3
+ The integration is ::    151838.375    
