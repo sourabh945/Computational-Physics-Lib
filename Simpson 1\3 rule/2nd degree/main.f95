@@ -60,7 +60,7 @@ program simpson_rule
         real function func(x,y)
             real ,intent(in) :: x , y 
             real :: value
-            value = x**2 + y**2
+            value = log(x+2*y)
             func = value
             return 
             end function func

@@ -2,7 +2,7 @@ program main
 
     implicit none
 
-    real :: upper_y,upper_x,lower_y,lower_y , integration = 0
+    real :: upper_y,upper_x,lower_y,lower_x , integration = 0
     real , dimension(:,:), allocatable :: optimiser
     integer :: i , degree
 
@@ -40,7 +40,9 @@ program main
 
     degree = (degree + 1)/2
 
-    integration = integration + optimiser(i,1)*(GuassQuadmethod(optimiser(i,2)))
+    do i = 1,degree
+        integration = integration + optimiser(i,1)*(GuassQuadmethod(optimiser(i,2)))
+    enddo
 
     deallocate(optimiser)
 
@@ -48,13 +50,15 @@ program main
 
     print *, "The integration is :: ",integration
 
+    stop
+
     contains
         real function func(m,t)
             real , intent(in) :: t , m
             real :: output , x ,y
             x = ((upper_x - lower_x)*t + upper_x + lower_x)/2.0
-            y = ((upper_y - lower_y)*t + upper_y + lower_y)/2.0
-            output = x**3 + y**3
+            y = ((upper_y - lower_y)*m + upper_y + lower_y)/2.0
+            output = x**2 + y**2
             func = output
             return 
         end function func
@@ -66,7 +70,9 @@ program main
             do j = 1,degree
                 integeration_x = integeration_x + optimiser(i,1)*func(y,optimiser(i,2))
             enddo
-            integeration_x = (integeration_x*(upper_x - lower_x))/2.8
+            integeration_x = (integeration_x*(upper_x - lower_x))/2.0
             GuassQuadmethod = integeration_x
             return
         end function GuassQuadmethod
+
+end program 
