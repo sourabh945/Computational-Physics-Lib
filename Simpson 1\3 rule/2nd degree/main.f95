@@ -42,7 +42,7 @@ program simpson_rule
     sum =  simpson(lower_y) - simpson(upper_y)
 
 ! loop calcuation the area of the all rectangle inside the limits
-    do i = 1,d_y/2
+    do i = 1,d_y/2 ! integration with y axis and simpson do for x axis first
         sum = sum + 4*simpson(lower_y + real(2*i-1)*h_y) + 2*simpson(lower_y + real(2*i)*h_y)
     enddo 
 
@@ -65,7 +65,7 @@ program simpson_rule
             return 
             end function func
 
-        real function simpson(t)
+        real function simpson(t) ! integrated for value of x 
             real x_sum , t
             integer j
             X_sum = func(lower_x,t) - func(upper_x,t)  

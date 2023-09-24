@@ -1,7 +1,7 @@
- Enter the order of the polynomial  (Hint : 2 to 5):: 
+ Enter the number of points taken (Hint : 2 to 5):: 
 5
  Enter the uppper limit :: 
-15
+10
  Enter the lower limit :: 
-3
- The integration is ::    151838.375    
+2
+ The integration is ::    20001.6016    

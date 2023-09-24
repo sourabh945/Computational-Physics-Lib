@@ -2,16 +2,22 @@ program main
 
     implicit none
 
+    ! declearing the variables need 
+
     real :: upper,lower , integration = 0
     real , dimension(:,:), allocatable  :: optimiser
     integer :: i , degree 
 
-    print *, "Enter the order of the polynomial  (Hint : 2 to 5):: "
+    ! getting the input about the upper and the lower limit and also value of n (number of points)
+
+    print *, "Enter the number of points taken (Hint : 2 to 5):: "
     read *, degree
     print *, "Enter the uppper limit :: "
     read *, upper
     print *, "Enter the lower limit :: "
     read *, lower
+
+    ! declearing the optimiser points value in the array
 
     if (degree == 2) then
         allocate(optimiser(2,2))
@@ -57,22 +63,23 @@ program main
         stop "Unable to do this operation for this degree of polynomial"
     endif
 
+    ! taking loop for all the value for calcuating the integration
 
     do i = 1,degree
         integration = integration + optimiser(i,1)*(func(optimiser(i,2)))
     enddo
   
-    deallocate(optimiser)
+    deallocate(optimiser) ! deallocate the array
 
     integration = (integration*(upper  - lower))/2.0
 
-    print *, "The integration is :: ",integration
+    print *, "The integration is :: ",integration !printing the result 
 
     stop 
 
     contains
-        real function func(t)
-            real , intent(in) :: t
+        real function func(t) ! function for making change in variable for condition
+            real , intent(in) :: t !of integration limit satisfied
             real :: output , x
             x = ((upper - lower)*t + upper + lower)/2.0
             output = x**4+1
@@ -81,6 +88,3 @@ program main
         end function func
 
 end program
-
-
-
