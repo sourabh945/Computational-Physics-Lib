@@ -50,12 +50,12 @@ program main
 
     contains
         real function func(t)
-        real , intent(in) :: t
-        real :: output , x
-        x = ((upper - lower)*t + upper + lower)/2.0
-        output = x**3
-        func = output
-        return 
+            real , intent(in) :: t
+            real :: output , x
+            x = ((upper - lower)*t + upper + lower)/2.0
+            output = x**3
+            func = output
+            return 
         end function func
 
 end program
