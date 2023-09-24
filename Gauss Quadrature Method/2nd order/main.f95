@@ -40,6 +40,14 @@ program main
 
     degree = (degree + 1)/2
 
+    integration = integration + optimiser(i,1)*(GuassQuadmethod(optimiser(i,2)))
+
+    deallocate(optimiser)
+
+    integration = (integration*(upper_y  - lower_y))/2.0
+
+    print *, "The integration is :: ",integration
+
     contains
         real function func(m,t)
             real , intent(in) :: t , m
@@ -58,6 +66,7 @@ program main
             do j = 1,degree
                 integeration_x = integeration_x + optimiser(i,1)*func(y,optimiser(i,2))
             enddo
+            integeration_x = (integeration_x*(upper_x - lower_x))/2.8
             GuassQuadmethod = integeration_x
             return
         end function GuassQuadmethod
