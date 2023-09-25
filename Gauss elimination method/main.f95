@@ -6,8 +6,8 @@ program guass_elmination
 
     real , dimension(:,:),allocatable :: matrix
     real , dimension(:) , allocatable ::  solution , variable
-    integer :: order , i , j , k , povit_status
-    real :: determinent , sol , mul
+    integer :: order , i , j , k , pivot_status
+    real :: determinant , sol , mul
 
     ! getting the number of the variable and equation and validating it
 
@@ -45,27 +45,27 @@ program guass_elmination
         enddo
     enddo
 
-    ! getting the povit status from the user and validate it 
+    ! getting the pivot status from the user and validate it 
 
-    print *, "Enter the status of the povit /n for no povit chosse 0,for half choose 1, for full choose 2"
-    read *, povit_status
+    print *, "Enter the status of the pivot for no pivot chosse 0,for half choose 1, for full choose 2"
+    read *, pivot_status
 
-    if(povit_status < 0 .or. povit_status > 2) then 
-        stop "Invalid Povit option "
+    if(pivot_status < 0 .or. pivot_status > 2) then 
+        stop "Invalid pivot option "
     endif
 
     ! making the upper triangular matrix from the given matrix by row operation
 
     do i = 1,order-1
 1       if (matrix(i,i) == 0) then
-            do k = i+1,order ! check that the povit element is zero or not
+            do k = i+1,order ! check that the pivot element is zero or not
                 if (matrix(k,i) .ne. 0) then
-                    call flip(k,i) ! changing the povit element by flipping the row
+                    call flip(k,i) ! changing the pivot element by flipping the row
                     goto 1
                 endif
             enddo
         endif
-        call povit(i) ! doing poviting in the matrix with the status user define
+        call pivot(i) ! doing pivoting in the matrix with the status user define
         do j = i+1,order
             mul = matrix(j,i)/matrix(i,i)
             do k = i+1,order+1
@@ -74,15 +74,15 @@ program guass_elmination
         enddo
     enddo
 
-    ! find the determinent of the upper triangular matrix and check it is not equal to zero
+    ! find the determinant of the upper triangular matrix and check it is not equal to zero
 
-    determinent = 1
+    determinant = 1
 
     do i = 1,order
-        determinent = determinent*matrix(i,i)
+        determinant = determinant*matrix(i,i)
     enddo
 
-    if (determinent == 0) then
+    if (determinant == 0) then
         stop "No Solution is exist for these equation "
     endif
 
@@ -159,43 +159,43 @@ program guass_elmination
             return 
         end subroutine flip_col
 
-        subroutine povit(row) ! this subroutine is use for to do poviting in the matrix per user define paviting status ( pavit_status)
+        subroutine pivot(row) ! this subroutine is use for to do pivoting in the matrix per user define paviting status ( pavit_status)
             
             integer , intent(in) :: row
-            real :: povit_value 
-            integer :: row_max_povit , i , col_max_povit , j
+            real :: pivot_value 
+            integer :: row_max_pivot , i , col_max_pivot , j
 
-            if (povit_status == 0) then ! for no poviting 
+            if (pivot_status == 0) then ! for no pivoting 
                 return 
 
-            else if (povit_status == 1) then ! for half poviting 
-                povit_value = matrix(row,row)
+            else if (pivot_status == 1) then ! for half pivoting 
+                pivot_value = matrix(row,row)
                 do i = row,order
-                    if (matrix(i,row) > povit_value) then
-                        row_max_povit = i
-                        povit_value = matrix(i,row)
+                    if (matrix(i,row) > pivot_value) then
+                        row_max_pivot = i
+                        pivot_value = matrix(i,row)
                     endif
                 enddo
-                call flip(row,row_max_povit) ! only flip the row which have maximum povit element
+                call flip(row,row_max_pivot) ! only flip the row which have maximum pivot element
                 return 
 
-            else if (povit_status == 2) then ! for do full poviting in the matrix
-                povit_value = matrix(row,row)
+            else if (pivot_status == 2) then ! for do full pivoting in the matrix
+                pivot_value = matrix(row,row)
                 do i = row,order
                     do j = row,order
-                        if (povit_value < matrix(i,j)) then
-                            povit_value = matrix(i,j)
-                            row_max_povit = i 
-                            col_max_povit = j
+                        if (pivot_value < matrix(i,j)) then
+                            pivot_value = matrix(i,j)
+                            row_max_pivot = i 
+                            col_max_pivot = j
                         endif
                     enddo
                 enddo
-                call flip(row,row_max_povit) ! here we check the element in the whole remaining matrix
-                call flip_col(row,col_max_povit)
+                call flip(row,row_max_pivot) ! here we check the element in the whole remaining matrix
+                call flip_col(row,col_max_pivot)
                 return
             endif
 
             return
-        end subroutine povit
+        end subroutine pivot
                 
 end program

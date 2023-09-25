@@ -41,7 +41,7 @@
 2
  Enter the constant term in            4 th equation :: 
 0
- Enter the status of the povit /n for no povit chosse 0,for half choose 1, for full choose 2
+ Enter the status of the pivot for no povit choose 0,for half choose 1, for full choose 2
 2
  The values of the variable are :: 
  Value of            1 th element is :: 
