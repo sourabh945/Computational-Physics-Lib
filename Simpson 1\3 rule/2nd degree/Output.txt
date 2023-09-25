@@ -1,6 +1,6 @@
  Enter the upper limit of x axis of the integration :: 
 2
- Enter the lower limit of x axis of the integeration :: 
+ Enter the lower limit of x axis of the integration :: 
 1.4
  Enter the upper limit of y axis of the integration :: 
 1.5

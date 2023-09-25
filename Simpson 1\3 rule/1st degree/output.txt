@@ -1,6 +1,6 @@
  Enter the upper limit of the integration :: 
 15
- Enter the lower limit of the integeration :: 
+ Enter the lower limit of the integration :: 
 0
  Enter the number of iteration :: 
 1000

@@ -8,7 +8,7 @@ program simpson_rule
 
     print *, "Enter the upper limit of x axis of the integration :: "
     read *, upper_x
-    print *, "Enter the lower limit of x axis of the integeration :: "
+    print *, "Enter the lower limit of x axis of the integration :: "
     read *, lower_x
     print *,"Enter the upper limit of y axis of the integration :: "
     read *, upper_y
@@ -19,7 +19,7 @@ program simpson_rule
     print *, "Enter the number of iteration of y axis :: "
     read *, d_y
 
-! validating the number of interation
+! validating the number of iteration
 
     if(d_x <= 0 .or. d_y <=0) then 
         print *, "Value of iteration is not correct"
@@ -41,7 +41,7 @@ program simpson_rule
 
     sum =  simpson(lower_y) - simpson(upper_y)
 
-! loop calcuation the area of the all rectangle inside the limits
+! loop calculation the area of the all rectangle inside the limits
     do i = 1,d_y/2 ! integration with y axis and simpson do for x axis first
         sum = sum + 4*simpson(lower_y + real(2*i-1)*h_y) + 2*simpson(lower_y + real(2*i)*h_y)
     enddo 
@@ -54,7 +54,7 @@ program simpson_rule
     stop
 
 
-! defining the function which integration we intersed to find
+! defining the function which integration we interested to find
     contains 
 
         real function func(x,y)

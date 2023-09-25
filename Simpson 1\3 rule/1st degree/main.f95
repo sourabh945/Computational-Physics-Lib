@@ -8,12 +8,12 @@ program simpson_rule
 
     print *, "Enter the upper limit of the integration :: "
     read(*,*) upper
-    print *, "Enter the lower limit of the integeration :: "
+    print *, "Enter the lower limit of the integration :: "
     read(*,*) lower
     print*, "Enter the number of iteration :: "
     read(*,*) d
 
-! validating the number of interation
+! validating the number of iteration
 
     if(d <= 0) then 
         print *, "Value of iteration is not correct"
@@ -30,7 +30,7 @@ program simpson_rule
 
     sum =  func(lower) - func(upper) 
 
-! loop calcuation the area of the all rectangle inside the limits
+! loop calculation the area of the all rectangle inside the limits
     do i = 1,d/2
         sum = sum + 4*func(lower + real(2*i-1)*h) + 2*func(lower + real(2*i)*h)
     enddo 
@@ -43,7 +43,7 @@ program simpson_rule
     stop
     end program
 
-! defining the function which integration we intersed to find
+! defining the function which integration we interested to find
 real function func(x)
     real x , value
     value = x**2
