@@ -63,7 +63,7 @@ program simpson_rule
             value = log(x+2*y)
             func = value
             return 
-            end function func
+        end function func
 
         real function simpson(t) ! integrated for value of x 
             real x_sum , t
@@ -75,7 +75,7 @@ program simpson_rule
             x_sum = x_sum*(h_x/3.0)
             simpson = x_sum
             return 
-            end function simpson
+        end function simpson
 
 end program 
 

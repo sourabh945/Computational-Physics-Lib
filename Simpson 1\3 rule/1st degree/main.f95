@@ -50,6 +50,3 @@ real function func(x)
     func = value
     return 
     end function
-
-
-
