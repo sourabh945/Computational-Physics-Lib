@@ -19,7 +19,7 @@
 3
  Enter the            3           3 th element :: 
 1
- Enter the guess for the eignvector :: 
+ Enter the guess for the eigenvector :: 
 1
 1
 1
@@ -27,5 +27,5 @@
 0.0001
  Enter the maximum iteration :: 
 50
- The eign Vector correspond to matrix in           10 is   0.499992937      0.499992937       1.00000000    
- The eign Value is    3.00000954    
+ The eigenvector correspond to matrix in   10 is   0.499992937      0.499992937       1.00000000    
+ The eigenvalue is    3.00000954    
