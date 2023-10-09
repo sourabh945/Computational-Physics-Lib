@@ -1,0 +1,14 @@
+{
+    "workbench.activityBar.iconClickBehavior": "toggle",
+    "workbench.activityBar.visible": true,
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.editor.decorations.colors": true,
+    "workbench.sideBar.location": "left",
+    "workbench.tips.enabled": true,
+    "workbench.view.alwaysShowHeaderActions": true,
+    "workbench.editor.labelFormat": "default",
+    "explorer.autoReveal": true,
+    "search.decorations.badges": true,
+    "workbench.editor.enablePreviewFromCodeNavigation": true,
+    "workbench.editor.enablePreviewFromQuickOpen": true
+}
