@@ -15,4 +15,4 @@ program main
     allocate(x(num_of_intervals),y(num_of_intervals))
 
     print *, "Enter the value of y at lower limit of x :: "
-    
+    read *, x_lower
