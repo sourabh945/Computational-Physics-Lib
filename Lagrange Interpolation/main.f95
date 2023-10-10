@@ -18,6 +18,8 @@ program main
         stop "Invalid number of the entry"
     endif
 
+    ! open the file store the input and calculated points
+
     inquire(file="points.dat",exist=f1)
     inquire(file="inputpoints.dat",exist=f2)
     if (f1) then
@@ -44,7 +46,7 @@ program main
         write(2,*)x(i),y(i)
     enddo
 
-    ! getting the point where we find the value of the function
+    ! getting the upper and lower limit of the graph with points number
 
     print *, "Ente the upper limit of the polation ::"
     read *, upper
@@ -55,12 +57,13 @@ program main
 
     if (m <=0) stop "Invalid number of x taken "
 
-    ! initizating the value of result and loop for getting the summation value of y*lagrange(x)
+    ! Making the step size 
 
     h = (upper - lower)/real(m)
 
-
     if (h<=0) stop "upper and lower limit is not good"
+
+    ! find the value of f(x) at every point we getting
 
     do j = 1,m
         x_rand = lower + j*h
@@ -69,7 +72,7 @@ program main
             call lagrange(i,x_rand)
             result = result + y(i)*larg
         enddo
-        write(1,*)x_rand,result
+        write(1,*)x_rand,result ! writing into file
     enddo
 
     print*, "polation is completed"
@@ -78,7 +81,7 @@ program main
 
     deallocate(x,y)
 
-    close(1)
+    close(1) ! closing the file
     close(2)
 
     stop
