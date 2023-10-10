@@ -99,6 +99,6 @@ program main
                 endif
             enddo
             return 
-            end subroutine
+        end subroutine
 
-    end program
+end program
