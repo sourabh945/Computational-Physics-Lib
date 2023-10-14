@@ -33,16 +33,12 @@ program main
     endif
 
     do i = 0,step_num
-        impedence = sqrt(resistance**2 + (2*pi*(freq_lower + i*step)*inductance - 1/(2*pi*(freq_lower + i*step)*capicatance))**2)
+        impedence = 1/sqrt(resistance**2 + (2*pi*(freq_lower + i*step)*inductance - 1/(2*pi*(freq_lower + i*step)*capicatance))**2)
         write(1,*)freq_lower+i*step,impedence
     
     enddo
 
     close(1)
-
-    call execute_command_line("chmod +x ./plot.sh")
-
-    call execute_command_line("./plot.sh")
 
     print *, "Frequency response is show in graph"
 
