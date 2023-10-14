@@ -65,7 +65,6 @@ program main
 
     do i = 1,degree
         integration = integration + optimiser(i,1)*(GuassQuadmethod(optimiser(i,2)))
-        print *, " "
     enddo
 
     deallocate(optimiser)
