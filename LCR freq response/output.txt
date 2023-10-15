@@ -1,0 +1,18 @@
+ Enter the value of resistance : 
+0.2
+ Enter the value of inductance (in mH): 
+0.93
+ Enter the value of capicatance (in mF): 
+0.4
+ Enter the value of voltage (in Volt): 
+12
+ Enter the lower limit of frequency : 
+0
+ Enter the upper limit of frequency : 
+1500
+ Enter the step taken to from lower frequency to upper frequency : 
+1000000
+ Simulation complete
+ 
+ Resonate Frequency is    260.941498     and current for    12.0000000     V is    60.0000000    
+Note: The following floating-point exceptions are signalling: IEEE_DIVIDE_BY_ZERO
