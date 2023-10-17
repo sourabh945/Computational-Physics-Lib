@@ -64,6 +64,7 @@ program guass_elmination
                     goto 1
                 endif
             enddo
+            if (matrix(i,i) == 0) stop "There is no unique solution is exists for these equations"
         endif
         call pivot(i) ! doing pivoting in the matrix with the status user define
         do j = i+1,order
