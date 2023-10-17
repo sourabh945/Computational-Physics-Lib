@@ -169,9 +169,9 @@ program guass_elmination
                 return 
 
             else if (pivot_status == 1) then ! for half pivoting 
-                pivot_value = matrix(row,row)
+                pivot_value = abs(matrix(row,row))
                 do i = row,order
-                    if (matrix(i,row) > pivot_value) then
+                    if (matrix(i,row) > abs(pivot_value)) then
                         row_max_pivot = i
                         pivot_value = matrix(i,row)
                     endif
@@ -180,11 +180,11 @@ program guass_elmination
                 return 
 
             else if (pivot_status == 2) then ! for do full pivoting in the matrix
-                pivot_value = matrix(row,row)
+                pivot_value = abs(matrix(row,row))
                 do i = row,order
                     do j = row,order
-                        if (pivot_value < matrix(i,j)) then
-                            pivot_value = matrix(i,j)
+                        if (pivot_value < abs(matrix(i,j))) then
+                            pivot_value = abs(matrix(i,j))
                             row_max_pivot = i 
                             col_max_pivot = j
                         endif
