@@ -67,6 +67,8 @@ program main
         write(2,*)val,result
     enddo
 
+    close(1)
+
     print*, "Simulation is complete"
 
     stop
