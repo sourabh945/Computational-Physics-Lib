@@ -2,7 +2,7 @@ program main
     implicit none ! declearing the variables
 
     real , dimension(:) , allocatable :: x(:) , y(:) , diff(:)
-    real :: result , p , d , val
+    real :: result , p , d , val , fact
     integer :: i , j , k , n , index , row , num_points
     logical :: f1,f2
 
@@ -10,7 +10,7 @@ program main
     read*, n
     if (n <= 0) stop "Invalid entry" ! And validiting them
 
-    allocate(x(n),y(n),diff(fact(n-1))) ! allocatingg the memory for all arrays
+    allocate(x(n),y(n),diff((n**n - n)/2)) ! allocatingg the memory for all arrays
 ! here we are using the linear array for the forward difference table to saving the memory
 
     print*, "Enter the value of x and y : " ! reading the given points and number of points generated b/w them
@@ -49,16 +49,18 @@ program main
         row = row + n - i ! this variable row can give ablity to change the column of table 
     enddo
 
-    d = (x(n) - x(1))/real(num_points) ! getting the difference between the points we calculating 
+    d = (x(n) - x(1))/real(num_points)    ! getting the difference between the points we calculating 
 
-    do k = 1,num_points-1 ! taking a loop for calculating the points
+    do k = 1,num_points-1       ! taking a loop for calculating the points
         val = x(1) + k*d
-        index = cal_x0_index(val) ! here we find the index of x0 for a given point val
+        index = cal_x0_index(val)     ! here we find the index of x0 for a given point val
         p = (val - x(index))/(x(2) - x(1))
-        result = y(index) ! result is the value of f(x) at x
-        row = 0
+        result = y(index)          ! result is the value of f(x) at x
+        fact = 1           ! for getting the insuit factorial in the formulae
+        row = 0  
         do i = 1, n-index
-            result = result + p*diff(row+index)/real(fact(i))
+            fact = fact*i
+            result = result + p*diff(row+index)/fact
             p = p*(p-i)
             row = row + n-i
         enddo
@@ -70,23 +72,8 @@ program main
     stop
 
     contains 
-        integer function fact(valu) ! the function for find the factorial of the number
-            integer , intent(in) :: valu
-            integer :: l , res 
-            res = 1
-            if (valu == 1) then
-                fact = 1
-                return
-            endif
-            do l = 2, valu
-                res= res*l
-            enddo
-            fact = res
-            return 
-        end function fact
-
-        integer function cal_x0_index(value) ! this is funciton for calculating the index of 
-            real , intent(in) :: value       ! x0 for a given value of x
+        integer function cal_x0_index(value)    ! this is funciton for calculating the index of 
+            real , intent(in) :: value          ! x0 for a given value of x
             integer :: k
             do k = 1,n
                 if (x(k) > value) then
