@@ -8,9 +8,11 @@ program main
     logical :: f1,f2
 
     print*, "Enter the value of the number of interval :: " ! getting the number of the points
-    read*, num_of_intervals
+    ! read*, num_of_intervals
     print*, "Enter the upper limit of the time :: "
-    read*, upper_t
+    ! read*, upper_t
+    num_of_intervals = 1000000
+    upper_t = 10000
 
     h = upper_t/real(num_of_intervals) ! calculation the time interval 
     if(h<=0 ) stop "Invalid entry"
@@ -21,12 +23,17 @@ program main
     k= 1.5*1.5
     r = 0.75
 
+
     print*, "Enter the value of y at t=0 ::" ! getting the starting point in the phase diagram 
-    read*, y(1)
+    ! read*, y(1)
+    y(1) = 0
     print*, "Enter the value of y' at t=0 :: "
-    read*, y1(1)
+    ! read*, y1(1)
+    y1(1) = 0
     print*, "Enter the value of Q :: "
     read*, q 
+    print*,"enter o"
+    read*, o
 
     inquire(file="phase_diagram.dat",exist=f1) ! opening the file for save the data
     if(f1) then
@@ -46,7 +53,7 @@ program main
     do j = 2,num_of_intervals+1 ! loop for calculationg the value at every time interval 
         call rkmethod(j)
         write(1,*)x(j),y(j),y1(j) ! writting the in the file 
-        if(j >= num_of_intervals*0.1) write(2,*)x(j),y(j),y1(j) ! deleting the first entry and save into another file
+        if(j >= num_of_intervals*o) write(2,*)x(j),y(j),y1(j) ! deleting the first entry and save into another file
     enddo
 
     print*, "simulation is complete"
