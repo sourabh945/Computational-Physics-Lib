@@ -1,19 +1,19 @@
 program main 
 
     implicit none ! declaring the variables
-    real :: resistance , inductance , capicatance , inv_imp , freq_lower , freq_upper , step 
+    real :: resistance , inductance , capacitance , inv_imp , freq_lower , freq_upper , step 
     real :: resonate_freq , voltage , current , high_current , cal_resonate
     integer :: step_num , i
     real , parameter :: pi = 3.14159265
     logical :: f1
-! getting the value of resistance , inductor and capicatance from the user
+! getting the value of resistance , inductance  and capacitance from the user
 
     print *, "Enter the value of resistance : " 
     read *, resistance
     print *, "Enter the value of inductance (in mH): "
     read *, inductance
-    print *, "Enter the value of capicatance (in mF): "
-    read *, capicatance
+    print *, "Enter the value of capacitance (in mF): "
+    read *, capacitance
     print *, "Enter the value of voltage (in Volt): "
     read *,voltage
 
@@ -29,9 +29,9 @@ program main
 
     inductance = inductance/1000 ! convert them into mH and mF
 
-    capicatance = capicatance/1000
+    capacitance = capacitance/1000
 
-    cal_resonate = 1/(2*pi*sqrt(inductance*capicatance)) ! calculating the resonant from formula
+    cal_resonate = 1/(2*pi*sqrt(inductance*capacitance)) ! calculating the resonant from formula
 
     !check exiting file and open it and if file doesn't exit then create the files
 
@@ -46,7 +46,7 @@ program main
 
     do i = 0,step_num ! creating the frequency response of LCR circuit
 
-        inv_imp = 1/sqrt(resistance**2 + (2*pi*(freq_lower + i*step)*inductance - 1/(2*pi*(freq_lower + i*step)*capicatance))**2)
+        inv_imp = 1/sqrt(resistance**2 + (2*pi*(freq_lower + i*step)*inductance - 1/(2*pi*(freq_lower + i*step)*capacitance))**2)
         current = inv_imp*voltage
         write(1,*)freq_lower+i*step,current
         if(current > high_current) then ! calculating the resonant frequency from the graph
