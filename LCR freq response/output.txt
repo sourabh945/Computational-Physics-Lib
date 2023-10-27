@@ -2,7 +2,7 @@
 0.2
  Enter the value of inductance (in mH): 
 0.93
- Enter the value of capicatance (in mF): 
+ Enter the value of capacitance (in mF): 
 0.4
  Enter the value of voltage (in Volt): 
 12
