@@ -10,5 +10,15 @@
     "explorer.autoReveal": true,
     "search.decorations.badges": true,
     "workbench.editor.enablePreviewFromCodeNavigation": true,
-    "workbench.editor.enablePreviewFromQuickOpen": true
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    "cSpell.enableFiletypes": [
+        "FortranFixedForm",
+        "fortran",
+        "fortran-modern"
+    ],
+    "cSpell.words": [
+        "deallocate",
+        "enddo",
+        "inputpoints"
+    ]
 }

@@ -2,7 +2,7 @@ program main
 
     implicit none
 
-    ! declearing the variables 
+    ! declaring the variables 
 
     real , dimension(:) , allocatable :: x ,y , nx , ny
     integer :: n,i,m , j
@@ -48,9 +48,9 @@ program main
 
     ! getting the upper and lower limit of the graph with points number
 
-    print *, "Ente the upper limit of the polation ::"
+    print *, "Enter the upper limit of the extrapolation ::"
     read *, upper
-    print *, "Enter the lower limit of the polation ::"
+    print *, "Enter the lower limit of the extrapolation ::"
     read *, lower
     print *, "Enter the number of x we find between the limits :: "
     read *, m
@@ -75,7 +75,7 @@ program main
         write(1,*)x_rand,result ! writing into file
     enddo
 
-    print*, "polation is completed"
+    print*, "interpolation and extrapolation is completed"
 
     ! deallocate the x and y array to free the memory
 
