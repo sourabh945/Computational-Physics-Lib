@@ -7,10 +7,10 @@
 1.6     0.4554
 1.9     0.2818
 2.2     0.1103
- Ente the upper limit of the polation ::
+ Enter the upper limit of the extrapolation ::
 2.2
- Enter the lower limit of the polation ::
+ Enter the lower limit of the extrapolation ::
 0.8
  Enter the number of x we find between the limits :: 
 1000
- polation is completed
+ interpolation and extrapolation is completed
