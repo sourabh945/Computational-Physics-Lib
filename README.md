@@ -7,7 +7,7 @@ use the python that translate into the fortran .
 
 All the program in main branch is well tested and they can be fit for all cases.
 
-All the excuatable are made for the linux.
+All the executable are made for the linux.
 
 The new underdevelopment program in the test branch 
 please Inform if any error is occur in the program .
