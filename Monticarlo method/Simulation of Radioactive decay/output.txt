@@ -1,0 +1,5 @@
+Enter the half life time period :: 
+10
+ Enter the number atoms at start :: 
+1000
+ simulation is complete

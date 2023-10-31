@@ -1,0 +1,13 @@
+sourabh@sourabh-Desktop:/mnt/B/Computational Physics/Povit Condensation/determinate of matrix$ ./determinant.out 
+ Enter the number of the rows in the matrix :: 
+2
+ Enter the matrix :: 
+           1           1 th element is :: 
+2
+           1           2 th element is :: 
+1
+           2           1 th element is :: 
+3
+           2           2 th element is :: 
+4
+ Determinent of the matrix is    5.00000000

@@ -1,0 +1,19 @@
+ Enter the order of the matrix
+2
+ Enter the elements of the matrix
+ enter           1           1 th elment :
+2
+ enter           1           2 th elment :
+1
+ enter           2           1 th elment :
+3
+ enter           2           2 th elment :
+4
+ Determinent of the matrix is    5.00000000    
+ Inverse of the matrix is :: 
+  0.800000012    
+ -0.200000003    
+ 
+ -0.600000024    
+  0.400000006    
+ 
