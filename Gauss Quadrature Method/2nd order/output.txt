@@ -1,0 +1,11 @@
+ Enter the order of the polynomial  (Hint : 2 to 5):: 
+3
+ Enter the upper limit of x axis :: 
+2
+ Enter the lower limit of x axis:: 
+1.4
+ Enter the upper limit of y axis:: 
+1.5
+ Enter the lower limit of y axis:: 
+1
+ The integration is ::   0.429554492    
