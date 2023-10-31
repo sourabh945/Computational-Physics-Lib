@@ -1,7 +1,0 @@
- Enter the number of points taken (Hint : 2 to 5):: 
-5
- Enter the uppper limit :: 
-10
- Enter the lower limit :: 
-2
- The integration is ::    20001.6016    

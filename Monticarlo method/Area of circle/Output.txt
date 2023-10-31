@@ -1,8 +1,0 @@
-Enter the value of the radius of the circle :: 
-5
- Enter the number of the points uses :: 
-1000
- The area of the circle by Monti Carlo method is ::    77.4000015    
- Inner points ::          774
- The area by simple formula is ::    78.5398178    
- The percentage error ::   -1.47263086
