@@ -76,7 +76,7 @@ program main
     print *, "The integration is :: ",integration !printing the result 
 
     stop 
-
+    
     contains
         real function func(t) ! function for making change in variable for condition
             real , intent(in) :: t !of integration limit satisfied

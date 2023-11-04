@@ -98,7 +98,7 @@ program guass_elmination
 
     print *, "The values of the variable are :: "
 
-    ! finding the match for the variable and solution of the equaitons
+    ! finding the match for the variable and solution of the equations
 
     do i = 1,order
         print *, "Value of ",i,"th element is :: "
