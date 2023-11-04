@@ -1,5 +1,5 @@
 program main
-    implicit none ! declearing the variables , here y1 is the first derivative of the y wrt x
+    implicit none ! declaring the variables , here y1 is the first derivative of the y wrt x
 
     real , allocatable :: x(:), y(:) , y1(:)
     integer :: num_of_intervals , j
@@ -34,7 +34,7 @@ program main
 
     write(1,*)x(1),y(1),y1(1)
 
-    do j=2,num_of_intervals+1 ! runing loop for calculate the values and store in the file 
+    do j=2,num_of_intervals+1 ! running loop for calculate the values and store in the file 
         call rkmethod(j)
         write(1,*)x(j),y(j),y1(j)
     enddo
