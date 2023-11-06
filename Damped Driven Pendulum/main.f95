@@ -1,8 +1,8 @@
 program main
     implicit none 
-    ! Refrence: https://galileoandeinstein.phys.virginia.edu/7010/CM_22a_Period_Doubling_Chaos.html
+    ! Reference: https://galileoandeinstein.phys.virginia.edu/7010/CM_22a_Period_Doubling_Chaos.html
 
-    real ,dimension(:) , allocatable :: x , y , y1 ! declearing variables
+    real ,dimension(:) , allocatable :: x , y , y1 ! declaring variables
     real :: upper_t , s_t , k  , o , r , q , h
     integer :: num_of_intervals , j
     logical :: f1,f2
@@ -50,9 +50,9 @@ program main
 
     write(1,*)x(1),y(1),y1(1)
 
-    do j = 2,num_of_intervals+1 ! loop for calculationg the value at every time interval 
+    do j = 2,num_of_intervals+1 ! loop for calculating the value at every time interval 
         call rkmethod(j)
-        write(1,*)x(j),y(j),y1(j) ! writting the in the file 
+        write(1,*)x(j),y(j),y1(j) ! writing the in the file 
         if(j >= num_of_intervals*o) write(2,*)x(j),y(j),y1(j) ! deleting the first entry and save into another file
     enddo
 
@@ -71,7 +71,7 @@ program main
             return 
         end function func
 
-        subroutine rkmethod(i) ! subroutine for solving the differential equaiton 
+        subroutine rkmethod(i) ! subroutine for solving the differential equation 
             integer , intent(in) :: i
             real :: k1,k2,k3,k4,k11,k12,k13,k14,result
             k11 = h*y1(i-1)
