@@ -20,8 +20,8 @@ program main
     allocate(x(num_of_intervals+1),y(num_of_intervals+1),y1(num_of_intervals+1))
     
     x(1) = 0.0 ! defining the constants value of the equation 
-    k= 1.5*1.5
-    r = 0.75
+    k= 1
+    r = 0.1
 
 
     print*, "Enter the value of y at t=0 ::" ! getting the starting point in the phase diagram 
@@ -66,7 +66,7 @@ program main
         real function func(val_x,val_y,val_y1) ! function of the damped driven pendulum
             real , intent(in) :: val_x,val_y,val_y1
             real :: result 
-            result = q*k*cos(val_x) - k*sin(val_y) - r*val_y1
+            result = q*sin(val_x*real(3/2)) - k*sin(val_y) - r*val_y1
             func = result 
             return 
         end function func
