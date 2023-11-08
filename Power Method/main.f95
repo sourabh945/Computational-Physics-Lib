@@ -2,7 +2,7 @@ program main
     implicit none ! declaring the variable 
 
     real , allocatable :: matrix(:,:) , vector(:) , pervious_vector(:)
-    real :: user_error , eigenValue , error = 1074E12
+    real :: user_error , eigenValue , error = 1074E12 , count=0
     integer :: i ,j,order , iteration 
 
     ! getting the input from the user and also verified the input and allocating the space
@@ -46,6 +46,8 @@ program main
 
         enddo
         
+        if(eigenValue == 0 ) stop "Unable to find the eigenVector" 
+        
         error = 0
 
         do i = 1,order      ! Calculation the error and making vector equal to pervious vector
@@ -62,22 +64,25 @@ program main
 
     enddo
 
-1   print *, "The eign Vector correspond to matrix in ",j,"is ",(vector(i), i= 1,order)
+1   print *, "The eigenVector correspond to matrix in ",j,"is ",(vector(i), i= 1,order)
 
     eigenValue = 0 ! here we calculating the eigenValue by using the ratio of pervious vector and new vector
 
     do i = 1,order
-
         vector(i) = sum(matrix(i,:)*pervious_vector(:))
-        eigenValue = eigenValue + vector(i)/pervious_vector(i)
+        if(pervious_vector(i) /= 0 ) then
+            eigenValue = eigenValue + vector(i)/pervious_vector(i)
+        else 
+            count = count + 1
+        endif
 
     enddo
 
-    eigenValue = eigenValue/real(order)
+    eigenValue = eigenValue/real(order - count)
     
-    print *, "The eign Value is " , eigenValue
+    print *, "The eigenValue is " , eigenValue
 
-    deallocate(vector,pervious_vector,matrix) ! deallocating the all variables
+    deallocate(vector,pervious_vector,matrix) ! deallocate the all variables
 
     stop 
 end program 
