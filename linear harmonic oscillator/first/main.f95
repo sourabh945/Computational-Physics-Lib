@@ -18,17 +18,18 @@ program main
 
     num_of_intervals = 10000
     a = -1*sqrt(3.2653*energy)
-    x_lower = -20
-    x_upper = 20
+    x_lower = a
+    x_upper = -a
     h = (x_upper - x_lower)/real(num_of_intervals)
     allocate(x(num_of_intervals+1),si(num_of_intervals+1),si1(num_of_intervals+1))
     x(1) = x_lower
     si(1) = 0
-    si1(1) = 0
+    si1(1) = 0.001
     write(1,*)x(1),si(1),si1(1)
     do l = 2,num_of_intervals+1
+        x(l) = x_lower + l*h
         call rkmethod(l)
-        write(1,*)x(l),si(l),si1(l),energy
+        write(1,*)x(l),si(l)*si(l),si1(l),energy,(func(x(l),si(l),si1(l)))**2
     enddo
     if(si(num_of_intervals+1) == 0) then 
         print*, "The graph is satisfied at ",energy," and the graph value is ",k
@@ -43,7 +44,7 @@ program main
         real function func(val_x,val_y,val_y1) ! here the ODE we wanted to solve 
             real , intent(in) :: val_x,val_y,val_y1
             real :: result 
-            result = -energy/20.0 + (0.765625e-2)*val_x*val_x
+            result = (-energy/20.0 + (0.765625e-2)*val_x*val_x)*val_y
             func = result 
             return 
         end function func
