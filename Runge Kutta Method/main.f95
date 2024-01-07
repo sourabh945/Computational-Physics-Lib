@@ -43,7 +43,7 @@ program main
 
     print*, "ODE is solved" 
     print*, "Value of y at x = ",x(num_of_intervals+1)," is  :: ",y(num_of_intervals+1)," and y' is :: ",y1(num_of_intervals+1)
-    
+    deallocate(x,y,y1)
     stop
 
     contains
