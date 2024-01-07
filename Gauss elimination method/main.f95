@@ -95,7 +95,7 @@ program guass_elmination
 
     do i = order,1,-1
         sol = matrix(i,order + 1)
-        do j = i,order
+        do j = i+1,order
             sol = sol - matrix(i,j)*solution(j)
         enddo
         solution(i) = sol/matrix(i,i)
